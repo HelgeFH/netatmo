@@ -99,7 +99,8 @@ def post_request(url, params):
     trace(2, params, pretty=True)
     start_time = time.time()
     resp = requests.post(url, data=params)
-    trace(1, "<<<< %d bytes in %.3f s" % (len(resp.content), time.time() - start_time))
+    trace(1, "<<<< %d bytes in %.3f s %s" % (len(resp.content), time.time() - start_time, resp))
+
     ret = json.loads(resp.content)
     trace(2, ret, pretty=True)
     return ret
